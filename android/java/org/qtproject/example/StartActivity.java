@@ -6,15 +6,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 //import android.R;
 import android.widget.Toast;
-
-import java.util.Timer;
-import java.util.TimerTask;
+import android.view.View;
+import android.widget.Button;
+import android.widget.RelativeLayout;
 
 
 public class StartActivity extends AppCompatActivity {
 
      public Context ctx;
-//     public Intent myIntent = new Intent(ctx, org.qtproject.qt5.android.bindings.QtActivity.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,33 +22,21 @@ public class StartActivity extends AppCompatActivity {
 
 
         ctx=getBaseContext();
+
         Toast.makeText(ctx.getApplicationContext() , "StartActivity Loaded" , Toast.LENGTH_SHORT).show();
 
-
-
-        TimerTask myTimerTask = new TimerTask() {
-
-            Intent myIntent = new Intent(ctx, org.qtproject.qt5.android.bindings.QtActivity.class);
-
-                    @Override
-                    public void run() {
+        RelativeLayout layout = new RelativeLayout(this);
+                Button btnChangeColour = new Button(this);
+                btnChangeColour.setText("Open QML Page");
+                btnChangeColour.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v) {
+                        Intent myIntent = new Intent(ctx, org.qtproject.qt5.android.bindings.QtActivity.class);
                         ctx.startActivity(myIntent);
                     }
-
-                };
-
-                Timer timer = new Timer();
-
-                timer.schedule(myTimerTask, 10000);
+                });
+                layout.addView(btnChangeColour);
+                setContentView(layout);
 
 
-
-//         new FileObserver("/sdcard/") {
-//             @Override
-//             public void onEvent(int event, String path) {
-//                 if (event == FileObserver.CREATE)
-//                     Toast.makeText(ctx.getApplicationContext() , "File createdxx" , Toast.LENGTH_SHORT).show();
-//             }
-//         }.startWatching();
     }
 }

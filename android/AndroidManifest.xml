@@ -1,22 +1,27 @@
 <?xml version="1.0"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="org.qtproject.example" android:versionCode="1" android:versionName="1.0.0">
+<manifest package="org.qtproject.example" xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.0.0" android:versionCode="1" android:installLocation="auto">
+    <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="21"/>
 
-    <application android:allowBackup="true" android:icon="@mipmap/ic_launcher" android:label="@string/app_name" android:roundIcon="@mipmap/ic_launcher_round" android:supportsRtl="false" android:theme="@style/AppTheme">
-        <activity android:name="org.qtproject.example.StartActivity" android:label="">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+    <!-- The following comment will be replaced upon deployment with default permissions based on the dependencies of the application.
+         Remove the comment if you do not require these default permissions. -->
+    <!-- %%INSERT_PERMISSIONS -->
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        <meta-data android:name="android.app.lib_name" android:value=""/>
-        </activity>
+    <!-- The following comment will be replaced upon deployment with default features based on the dependencies of the application.
+         Remove the comment if you do not require these default features. -->
+    <!-- %%INSERT_FEATURES -->
+
+    <supports-screens android:largeScreens="true" android:normalScreens="true" android:anyDensity="true" android:smallScreens="true"/>
+
+    <application android:allowBackup="true" android:icon="@mipmap/ic_launcher" android:label="-- %%INSERT_APP_NAME%% --" android:roundIcon="@mipmap/ic_launcher_round" android:supportsRtl="false" android:theme="@style/AppTheme">
 
         <activity android:name="org.qtproject.qt5.android.bindings.QtActivity" android:label="">
- <!-- Application arguments -->
+
+
+            <!-- Application arguments -->
             <!-- meta-data android:name="android.app.arguments" android:value="arg1 arg2 arg3"/ -->
             <!-- Application arguments -->
 
-            <meta-data android:name="android.app.lib_name" android:value=""/>
+            <meta-data android:name="android.app.lib_name" android:value="-- %%INSERT_APP_LIB_NAME%% --"/>
             <meta-data android:name="android.app.qt_sources_resource_id" android:resource="@array/qt_sources"/>
             <meta-data android:name="android.app.repository" android:value="default"/>
             <meta-data android:name="android.app.qt_libs_resource_id" android:resource="@array/qt_libs"/>
@@ -71,12 +76,20 @@
                 -->
             <meta-data android:name="android.app.extract_android_style" android:value="default"/>
             <!-- extract android style -->
+    </activity>
 
+<activity android:name=".StartActivity" android:label="">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+
+<meta-data android:name="android.app.lib_name" android:value="-- %%INSERT_APP_LIB_NAME%% --"/>
         </activity>
+
+    <!-- For adding service(s) please check: https://wiki.qt.io/AndroidServices -->
 
     </application>
 
-<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="21"/>
-<!-- %%INSERT_PERMISSIONS -->
-    <!-- %%INSERT_FEATURES -->
 </manifest>
