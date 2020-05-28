@@ -31,6 +31,7 @@ public class StartActivity extends AppCompatActivity {
                 btnChangeColour.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
                         Intent myIntent = new Intent(ctx, org.qtproject.qt5.android.bindings.QtActivity.class);
+                        myIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         ctx.startActivity(myIntent);
                     }
                 });
